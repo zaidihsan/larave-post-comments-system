@@ -16,6 +16,7 @@ class PostController extends Controller
     {
         // Validate the form data
         $validatedData = $request->validate([
+       
             'title' => 'required|string|max:255',
             'message' => 'required|string',
         ]);
@@ -24,9 +25,12 @@ class PostController extends Controller
         $post = new Post;
         $post->title = $validatedData['title'];
         $post->message = $validatedData['message'];
+        $post->user_id = auth()->user()->id;
         $post->save();
+
+        $request->session()->flash('success', 'Post created successfully');
     
         // Redirect to a success page or show a success message
         return redirect()->route('dashboard')->with('success', 'Post created successfully');
     }
-}
+} 

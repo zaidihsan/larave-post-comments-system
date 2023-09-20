@@ -5,26 +5,22 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
-{
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+     {
+        public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id')->unsigned();
             $table->string('title');
             $table->text('message');
-            $table->timestamps();
+            // Add other columns as needed
+            $table->timestamps(); // Add timestamps if required
         });
     }
-    
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('posts');
     }
-};
+      
+ };
