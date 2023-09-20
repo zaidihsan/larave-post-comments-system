@@ -33,4 +33,11 @@ class PostController extends Controller
         // Redirect to a success page or show a success message
         return redirect()->route('dashboard')->with('success', 'Post created successfully');
     }
+    
+    public function list()
+    {
+        $post = Post::with('user')->get();
+        return $post;
+    }
 } 
+  
