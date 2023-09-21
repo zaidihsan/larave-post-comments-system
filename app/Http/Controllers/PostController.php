@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Http\Requests\StorePostRequest;
 
 class PostController extends Controller
 {
@@ -12,24 +13,16 @@ class PostController extends Controller
         return view("post");
     }
 
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
-        // Validate the form data
-        $validatedData = $request->validate([
-            "title" => "required|string|max:255",
-            "message" => "required|string",
+        $post = Post::create([
+            "title" => request("title"),
+            "message" => request("message"),
+            "user_id" => auth()->user()->id,
         ]);
-
-        // Create a new Post instance
-        $post = new Post();
-        $post->title = $validatedData["title"];
-        $post->message = $validatedData["message"];
-        $post->user_id = auth()->user()->id;
-        $post->save();
 
         $request->session()->flash("success", "Post created successfully");
 
-        // Redirect to a success page or show a success message
         return redirect()
             ->route("dashboard")
             ->with("success", "Post created successfully");
