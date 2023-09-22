@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Models\Post;
 
 
 /*
@@ -37,11 +38,16 @@ Route::middleware("auth")->group(function () {
         "profile.destroy"
     );
 
-    Route::group(["prefix" => "post", "as" => "post."], function () {
+        Route::group(["prefix" => "post", "as" => "post."], function () {
         Route::get("/", [PostController::class, "create"])->name("create");
         Route::post("/", [PostController::class, "store"])->name("store");
         Route::get("/list", [PostController::class, "list"])->name("list");
+   
     });
 });
+        Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+        Route::get('/posts/{id}', [PostController::class,'show'])->name('show-post'); 
+        Route::get('/posts/edit/{id}', [PostController::class,'edit'])->name('edit-post');
+        Route::put('/update-post/{id}', [PostController::class,'update'])->name('update-post'); 
+        require __DIR__ . "/auth.php";
 
-require __DIR__ . "/auth.php";
