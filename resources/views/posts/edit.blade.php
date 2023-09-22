@@ -11,7 +11,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Edit Post</title>
 </head>
-
 <body>
     <div class="container">
         <h2>Edit Post</h2>
@@ -31,5 +30,4 @@
         </form>
     </div>
 </body>
-
 </html>

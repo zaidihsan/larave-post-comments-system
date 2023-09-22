@@ -10,15 +10,13 @@ class PostController extends Controller
     public function show($id)
     {
         $message = Post::find($id);
-        return view("show", ["message" => $message]);
-        
-  
+        return view("posts/show", ["message" => $message]);
     }
 
     public function edit($id)
     {
         $post = Post::find($id);
-        return view("edit", ["post" => $post]);
+        return view("posts/edit", ["post" => $post]);
     }
     public function update(Request $request, $id)
     {
@@ -48,12 +46,12 @@ class PostController extends Controller
     public function index()
     {
         $messages = Post::all();
-        return view("main", compact("messages"));
+        return view("posts/main", compact("messages"));
     }
 
     public function create()
     {
-        return view("post");
+        return view("posts/post");
     }
 
     public function store(StorePostRequest $request)
