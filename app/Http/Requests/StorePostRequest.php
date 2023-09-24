@@ -24,6 +24,7 @@ class StorePostRequest extends FormRequest
         return [
             "title" => "required|string|max:255",
             "message" => "required|string",
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', 
             
         ];
     }

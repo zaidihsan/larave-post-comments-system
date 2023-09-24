@@ -9,10 +9,11 @@
 		<title>Contact Form</title>
 		<link rel="stylesheet" href="{{ asset('post.css') }}">
 	</head>
+
 	<body>
 		<div class="container">
 			@auth
-			<form class="contact-form" action="/post" method="post">
+			<form class="contact-form" action="/post" method="post" enctype="multipart/form-data">
 				@csrf
 				<h1>Post</h1>
 				<input type="hidden" id="user_id" name="user_id">
@@ -22,6 +23,9 @@
 
 				<label for="message">Message:</label>
 				<textarea id="message" name="message" rows="5" required></textarea>
+
+				<label for="image">Image:</label>
+				<input type="file" id="image" name="image" accept="image/*" required>
 
 				<button type="submit">Submit</button>
 			</form>
@@ -38,4 +42,5 @@
 			};
 		</script>
 	</body>
+
 </html>

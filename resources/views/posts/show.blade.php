@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,24 +11,39 @@
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<title>View Post</title>
 	</head>
+
 	<body>
 		@php
 		$loggedInUserId = auth()->user()->id;
 		@endphp
 		<div class="container">
-                <h4>Title:</h4>
-			<h6>{{ $message->title }}</h6>
-			<h4>Message:</h4>
-			<p>{{ $message->message }}</p>
-
-
-			@if ($message->user_id === $loggedInUserId)
-			<a href="{{ route('edit-post', ['id' => $message->id]) }}" class="btn btn-secondary">Edit</a>
-			
-            @else
-        <p>This post belongs to another user.</p>
-        @endif
+			@if ($message)
+				@if ($message->image_path)
+					<img src="{{ asset($message->image_path) }}" alt="Post Image">
+				@endif
+				<h4>Title:</h4>
+				<h6>{{ $message->title }}</h6>
+				<h4>Message:</h4>
+				<p>{{ $message->message }}</p>
+	
+				@if ($message->user_id === $loggedInUserId)
+					<a href="{{ route('edit-post', ['id' => $message->id]) }}" class="btn btn-secondary">Edit</a><div>
+					@if ($message->user_id === $loggedInUserId)
+					<form method="POST" action="{{ route('delete-posts', ['id' => $message->id]) }}">
+						@csrf
+						@method('DELETE')
+						<button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this post?')">Delete</button>
+					</form>
+					@endif
+				@else
+					<p>This post belongs to another user.</p>
+				@endif
+			@else
+				<p>Post not found.</p>
+			@endif
 		</div>
 	</body>
+
+		
 
 </html>

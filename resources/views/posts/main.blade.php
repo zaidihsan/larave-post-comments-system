@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<title>Document</title>
 	</head>
+
 	<body>
 		@php
 		$loggedInUserId = auth()->user()->id;
@@ -21,10 +23,11 @@
 				<div class="col-md-4">
 					<div class="card mb-4">
 						<div class="card-body">
+							<img src="{{ asset($message->image_path) }}" alt="Post Image" class="img-fluid">
 							<h5 class="card-title">{{ $message->title }}</h5>
-                            <p class="card-text">{{ \Illuminate\Support\Str::limit($message->message, 20) }}</p>
+							<p class="card-text">{{ \Illuminate\Support\Str::limit($message->message, 20) }}</p>
 
-							<a href="{{ route('show-post', ['id' => $message->id]) }}" class=" btn-sm position-absolute" style="bottom: 10px; right: 10px;">More</a>
+							<a href="{{ route('show-post', ['id' => $message->id]) }}" class="btn-sm position-absolute" style="bottom: 10px; right: 10px;">More</a>
 						</div>
 					</div>
 				</div>
@@ -32,4 +35,5 @@
 			</div>
 		</div>
 	</body>
+
 </html>
