@@ -1,0 +1,44 @@
+/* main.css */
+
+/* Style the container */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Style the heading */
+h2 {
+
+    margin-bottom: 20px;
+}
+
+/* Style each card */
+.card {
+    height: 100%; /* Set a fixed height for all cards */
+}
+
+/* Style the card image */
+.card img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Style the card title */
+.card-title {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+/* Style the card text */
+.card-text {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Style the "More" button */
+.card .btn-sm {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}

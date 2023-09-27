@@ -14,6 +14,7 @@ return new class extends Migration
                 $table->text('message');
                 $table->string('image_path')->nullable();
                 $table->unsignedBigInteger('user_id');
+                $table->softDeletes($column = 'deleted_at', $precision = 0);
                 $table->timestamps();
         
                 $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

@@ -54,7 +54,7 @@ class PostController extends Controller
         $post->save();
 
         return redirect()
-            ->route("edit-post", ["id" => $post->id])
+            ->route("show-post", ["id" => $post->id])
             ->with("success", "Post updated successfully");
     }
     public function index()
@@ -102,19 +102,19 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
-
+    
         if (!$post) {
-            return redirect()->back()->with('error', 'Post not found.');
+            return redirect('dashboard');
         }
-
-        
+    
         if (auth()->user()->id !== $post->user_id) {
             return redirect()->back()->with('error', 'You are not authorized to delete this post.');
         }
-
+    
         // Delete the post
         $post->delete();
-
-        return redirect()->route('delete-posts', ['id' => $post->id])->with('success', 'Post deleted successfully.');// Replace 'view-posts' with the route to your list of posts
+    
+        return redirect()->route('delete-posts', ['id' => $post->id])
+            ->with('success', 'Post deleted successfully.');
     }
 }
