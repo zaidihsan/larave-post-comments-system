@@ -3,7 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 use App\Models\Post;
+use App\Models\Comment;
 use App\Livewire\Counter;
 
 
@@ -47,10 +49,12 @@ Route::middleware("auth")->group(function () {
     });
 });
         Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-        Route::get('/posts/{id}', [PostController::class,'show'])->name('show-post'); 
+        Route::get('/post/{post_id}', [PostController::class, 'show'])->name('post-show');
         Route::get('/posts/edit/{id}', [PostController::class,'edit'])->name('edit-post');
         Route::put('/update-post/{id}', [PostController::class,'update'])->name('update-post'); 
         Route::get('/delete-posts/{id}', [PostController::class,'destroy'])->name('delete-posts');
+        Route::post('/post/{post_id}/comment', [CommentController::class, 'store'])->name('post-comment');
+        Route::get('/post/{post_id}/comment', [CommentController::class, 'store'])->name('post-comment');
         
         Route::get('/counter', Counter::class);
         require __DIR__ . "/auth.php";

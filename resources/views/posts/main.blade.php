@@ -27,8 +27,7 @@
                         <img src="{{ asset($message->image_path) }}" alt="Post Image" class="img-fluid">
                         <h5 class="card-title">{{ $message->title }}</h5>
                         <p class="card-text">{{ \Illuminate\Support\Str::limit($message->message, 20) }}</p>
-
-                        <a href="{{ route('show-post', ['id' => $message->id]) }}" class="btn-sm position-absolute" style="bottom: 10px; right: 10px;">More</a>
+                        <a href="{{ route('post-show', ['post_id' => $message->id]) }}">View Post</a>
                     </div>
                 </div>
             </div>

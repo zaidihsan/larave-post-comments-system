@@ -5,14 +5,21 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use Illuminate\Support\Facades\Storage;
+use App\Models\User;
 
 class PostController extends Controller
 {
     public function show($id)
     {
-        $message = Post::find($id);
-        return view("posts/show", ["message" => $message]);
+    $post = Post::with('comments.user')->find($id);
+
+    if (!$post) {
+        return redirect()->route('dashboard')->with('error', 'Post not found');
     }
+
+    return view('posts.show', ['post' => $post]);
+}
+
 
     public function edit($id)
     {
@@ -52,10 +59,9 @@ class PostController extends Controller
         }
 
         $post->save();
-
         return redirect()
-            ->route("show-post", ["id" => $post->id])
-            ->with("success", "Post updated successfully");
+        ->route("post-show", ["post_id" => $post->id])
+        ->with("success", "Post updated successfully");
     }
     public function index()
     {
@@ -111,7 +117,7 @@ class PostController extends Controller
             return redirect()->back()->with('error', 'You are not authorized to delete this post.');
         }
     
-        // Delete the post
+        
         $post->delete();
     
         return redirect()->route('delete-posts', ['id' => $post->id])
