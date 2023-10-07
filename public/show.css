@@ -1,6 +1,9 @@
-/* Style the container */
+body
+{background-color: #1ec0d2;}
+
 .container {
     margin-top: 10px;
+   
 }
 
 
@@ -59,6 +62,7 @@ ul {
     border-radius: 5px;
     background-color: #fff;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    word-wrap: break-word;
 }
 
 .comment strong {

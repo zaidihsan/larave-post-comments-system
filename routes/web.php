@@ -54,8 +54,10 @@ Route::middleware("auth")->group(function () {
         Route::put('/update-post/{id}', [PostController::class,'update'])->name('update-post'); 
         Route::get('/delete-posts/{id}', [PostController::class,'destroy'])->name('delete-posts');
         Route::post('/post/{post_id}/comment', [CommentController::class, 'store'])->name('post-comment');
-        Route::get('/post/{post_id}/comment', [CommentController::class, 'store'])->name('post-comment');
-        
+        Route::get('/post/{post_id}/comment',  [CommentController::class, 'store'])->name('post-comment');
+        Route::patch('/comments/{comment_id}', [CommentController::class, 'update'])->name('edit-comment');
+        Route::delete('/comments/{comment_id}', [CommentController::class, 'destroy'])->name('delete-comment');
+        Route::get('/posts/{post}', [CommentController::class,'show'])->name('post.show');
         Route::get('/counter', Counter::class);
         require __DIR__ . "/auth.php";
 
