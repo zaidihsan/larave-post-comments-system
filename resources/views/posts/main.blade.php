@@ -10,10 +10,12 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="icon" href= "https://www.reddit.com/favicon.ico" type="image/x-icon"> 
+    <title>View Posts</title>
 </head>
 
 <body>
+    <button onclick="document.getElementById('demo').innerHTML=Date()">Time</button><p id="demo"></p>
     @php
     $loggedInUserId = auth()->user()->id;
     @endphp

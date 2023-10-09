@@ -11,10 +11,16 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<link rel="stylesheet" href="{{ asset('show.css') }}">
-		<title>View Post</title>
+		{{-- <link rel="shortcut icon" href="{{ asset('favicon.ico') }}"> --}}
+		<link rel="icon" href= "https://www.reddit.com/favicon.ico"type="image/x-icon"> 
+		<title>View Post and Comments </title>
 	</head>
 
 	<body>
+		<header class="custom-header">
+			Post And Add Comments
+		</header>
+	
 		@php
 		$loggedInUserId = auth()->user()->id;
 		@endphp

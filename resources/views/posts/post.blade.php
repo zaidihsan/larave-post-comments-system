@@ -8,6 +8,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 		<title>Contact Form</title>
 		<link rel="stylesheet" href="{{ asset('post.css') }}">
+		<link rel="icon" href= "https://www.reddit.com/favicon.ico"type="image/x-icon">  
 	</head>
 
 	<body>

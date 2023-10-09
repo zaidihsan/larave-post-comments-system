@@ -1,3 +1,4 @@
+<link rel="icon" href="https://www.reddit.com/favicon.ico" type="image/x-icon">
 <x-app-layout>
 	<x-slot name="header">
 		<h2 class="font-semibold text-xl text-gray-800 leading-tight">
